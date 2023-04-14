@@ -1,8 +1,7 @@
 #include <stdio.h>
+#include "funciones.h"
 
 int main() {
-    for (int i = 0; i<10; i++){
-        printf("%i\t", i);
-    }
+    int opcion = menu();
     return 0;
 }

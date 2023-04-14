@@ -17,7 +17,7 @@ typedef struct AGENDA{
     tContacto tipoContacto
 }tAgenda;
 
-
+int menu();
 
 
 #endif //PRACTICA4_FUNCIONES_H
