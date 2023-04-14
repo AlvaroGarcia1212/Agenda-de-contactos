@@ -4,6 +4,8 @@
 
 #include "funciones.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 void menu(){
     int opcion;
     printf("Menu de agenda de contactos\n");
@@ -47,4 +49,10 @@ void estructuraPrincipal(){
                 break;
         }
     } while(opcion != 0);
+}
+
+tAgenda *aumentaAgenda(tAgenda *lista, int *tamActual){
+    lista = realloc(lista, (*tamActual+5)*sizeof(tAgenda));
+    *tamActual+=5;
+    return lista;
 }
