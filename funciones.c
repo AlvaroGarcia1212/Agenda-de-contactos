@@ -4,7 +4,7 @@
 
 #include "funciones.h"
 #include <stdio.h>
-int menu(){
+void menu(){
     int opcion;
     printf("Menu de agenda de contactos\n");
     printf("------------------------------------\n");
@@ -15,7 +15,4 @@ int menu(){
     printf("5 - Importar agenda de fichero de texto\n");
     printf("0 - Salir\n");
     printf("------------------------------------\n");
-    printf("Selecione su opcion:\n");
-    scanf("%i", &opcion);
-    return opcion;
 }
