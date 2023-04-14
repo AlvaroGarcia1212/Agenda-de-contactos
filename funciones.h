@@ -18,6 +18,7 @@ typedef struct AGENDA{
 }tAgenda;
 
 void menu();
+void estructuraPrincipal();
 
 
 #endif //PRACTICA4_FUNCIONES_H
