@@ -8,19 +8,22 @@
 
 typedef enum CONTACTO{
     FAVORTO, CONOCIDO, TRABAJO
-}tContacto;
+}tTipo;
 
 typedef struct AGENDA{
     char nombre[MAX];
     char apellido[MAX];
     char num[MAX];
     short int edad;
-    tContacto tipoContacto
-}tAgenda;
+    tTipo tipoContacto
+}tContacto;
 
 void menu();
-void estructuraPrincipal();
-tAgenda *aumentaAgenda(tAgenda *lista, int *tamActual);
-
+tContacto *aumentaAgenda(tContacto *lista, int *tamActual);
+tContacto *aumentaAgenda2(tContacto *lista, int *tamActual);
+void verAgenda(tContacto *lista, int numPersonas);
+void aniadirContacto(tContacto *agenda, int numPersonas);
+tContacto *iniciarLista(int tam);
+void arreglar(char *palabra);
 
 #endif //PRACTICA4_FUNCIONES_H

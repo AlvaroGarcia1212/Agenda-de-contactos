@@ -5,6 +5,7 @@
 #include "funciones.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void menu(){
     int opcion;
@@ -19,40 +20,49 @@ void menu(){
     printf("------------------------------------\n");
 }
 
-void estructuraPrincipal(){
-    int opcion;
-    do {
-        printf("Selecione su opcion:");
-        scanf("%i", &opcion);
-        switch (opcion) {
-            case 0:
-                printf("Saliendo del menu");
-                break;
-            case 1:
-                printf("Ha seleccionado la opcion de ver su agenda de contactos\n");
-                break;
-            case 2:
-                printf("Ha selccionado la opcion de a%cadir un nuevo conatcto\n", 164);
-                break;
-            case 3:
-                printf("Ha seleccionado la opcion de borrar un nuevo contacto\n");
-                break;
-            case 4:
-                printf("Ha seleccionado la opcion de exportar una agenda en fichero de texto\n");
-                break;
-            case 5:
-                printf("Ha seleccionado la opcion de importar una agenda en fichero de tipo texto\n");
-                break;
-            default:
-                printf("La entrada es incorrecta, pruebe de nuevo:\n");
-                scanf("%i", &opcion);
-                break;
-        }
-    } while(opcion != 0);
-}
-
-tAgenda *aumentaAgenda(tAgenda *lista, int *tamActual){
-    lista = realloc(lista, (*tamActual+5)*sizeof(tAgenda));
+tContacto *aumentaAgenda(tContacto *lista, int *tamActual){
+    lista = realloc(lista, (*tamActual+5)*sizeof(tContacto));
     *tamActual+=5;
     return lista;
+}
+
+tContacto *aumentaAgenda2(tContacto *lista, int *tamActual){
+    realloc(lista, (5+*tamActual) * sizeof(tContacto *));
+}
+
+void verAgenda(tContacto *lista, int numPersonas){
+    if (numPersonas==0) printf("Su agenda no tiene ningun contacto");
+    else {
+        for (int i = 0; i < numPersonas; i++) {
+            printf("%i;%s;%s;%s;%i;%i\n", i + 1, (lista+numPersonas-1)->nombre, (lista+numPersonas-1)->apellido,
+                   (lista+numPersonas-1)->num, (lista+numPersonas-1)->edad, (lista+numPersonas-1)->tipoContacto);
+        }
+    }
+}
+
+
+void aniadirContacto(tContacto *agenda, int numPersonas){
+    agenda = realloc(agenda, sizeof(tContacto)*(1+numPersonas));
+    printf("Nombre:");
+    fgets((agenda+numPersonas)->nombre, 80, stdin);
+    arreglar((agenda+numPersonas)->nombre);
+    printf("Apellidos:");
+    fgets((agenda+numPersonas)->apellido, 80, stdin);
+    arreglar((agenda+numPersonas)->apellido);
+    printf("Numero:");
+    fgets((agenda+numPersonas)->num, 80, stdin);
+    arreglar((agenda+numPersonas)->num);
+}
+
+tContacto *iniciarLista(int tam){
+    tContacto *agenda;
+    agenda = (tContacto *)malloc(sizeof(tContacto)*tam);
+    return agenda;
+}
+
+void arreglar(char *palabra){
+    int aux = 0;
+    for (int i = 0; i<250 && aux == 0; i++){
+        if (palabra[i] == '\n') palabra[i] = '\0';
+    }
 }
