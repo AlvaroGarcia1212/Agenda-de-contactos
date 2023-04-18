@@ -13,7 +13,7 @@ int main() {
     do{
         menu();
         printf("Seleccione su opcion:");
-        fgets(opcionS, 10, stdin);
+        gets(opcionS);
         opcion = atoi(opcionS);
         switch (opcion) {
             case 0:
@@ -33,11 +33,11 @@ int main() {
                 if (contadorPersonas==tamActual){
                     agenda = (tContacto *) realloc(agenda, (5+tamActual)* sizeof(tContacto));
                 }
-                system("pause");
                 break;
 
             case 3:
                 printf("Ha seleccionado la opcion de borrar un nuevo contacto\n");
+                borrarContacto(agenda);
                 system("pause");
                 break;
 
@@ -57,6 +57,7 @@ int main() {
                 break;
         }
     }while(opcion != 0);
+
     free(agenda);
     return 0;
 }

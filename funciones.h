@@ -14,16 +14,25 @@ typedef struct AGENDA{
     char nombre[MAX];
     char apellido[MAX];
     char num[MAX];
-    short int edad;
+    char edad[3];
     tTipo tipoContacto
 }tContacto;
 
 void menu();
+
 tContacto *aumentaAgenda(tContacto *lista, int *tamActual);
+
 tContacto *aumentaAgenda2(tContacto *lista, int *tamActual);
+
 void verAgenda(tContacto *lista, int numPersonas);
+
 void aniadirContacto(tContacto *agenda, int numPersonas);
+
+void borrarContacto(tContacto *agenda);
+
 tContacto *iniciarLista(int tam);
+
 void arreglar(char *palabra);
+
 
 #endif //PRACTICA4_FUNCIONES_H
