@@ -39,6 +39,7 @@ tContacto *aumentaAgenda2(tContacto *lista, int *tamActual){
 
 void verAgenda(tContacto *lista, int numPersonas){
 
+    printf("\n");
     if (numPersonas==0) printf("Su agenda no tiene ningun contacto");
     else {
         for (int i = 0; i < numPersonas; i++) {
@@ -57,6 +58,7 @@ void verAgenda(tContacto *lista, int numPersonas){
             }
         }
     }
+    printf("\n");
 }
 
 
@@ -130,9 +132,14 @@ void borrarContacto(tContacto *agenda, int numPersonas){
 void arreglar(char *palabra){
     int aux = 0;
     for (int i = 0; i<250 && aux == 0; i++){
-        if (palabra[i] == '\n') palabra[i] = '\0';
+        if (palabra[i] == '\n') {
+            palabra[i] = '\0';
+            aux =1;
+        }
     }
 }
+
+
 
 void garardarFichero(tContacto *agenda){
     char file[MAX];

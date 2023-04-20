@@ -17,7 +17,7 @@ int main() {
         opcion = atoi(opcionS);
         switch (opcion) {
             case 0:
-                printf("Saliendo del menu");
+                printf("Proceso finalizado");
                 break;
 
             case 1:
@@ -30,7 +30,8 @@ int main() {
                 aniadirContacto(agenda, contadorPersonas);
                 contadorPersonas++;
                 if (contadorPersonas==tamActual){
-                    agenda = (tContacto *) realloc(agenda, (5+tamActual)* sizeof(tContacto));
+                    tamActual+=5;
+                    agenda = (tContacto *) realloc(agenda, (tamActual)* sizeof(tContacto));
                 }
                 break;
 
@@ -42,17 +43,14 @@ int main() {
 
             case 4:
                 printf("Ha seleccionado la opcion de exportar una agenda en fichero de texto\n");
-                system("pause");
                 break;
 
             case 5:
                 printf("Ha seleccionado la opcion de importar una agenda en fichero de tipo texto\n");
-                system("pause");
                 break;
 
             default:
                 printf("La entrada es incorrecta, pruebe de nuevo:\n");
-                system("pause");
                 break;
         }
     }while(opcion != 0);
