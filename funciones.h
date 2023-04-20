@@ -28,7 +28,7 @@ void verAgenda(tContacto *lista, int numPersonas);
 
 void aniadirContacto(tContacto *agenda, int numPersonas);
 
-void borrarContacto(tContacto *agenda);
+void borrarContacto(tContacto *agenda, int numPersonas);
 
 tContacto *iniciarLista(int tam);
 

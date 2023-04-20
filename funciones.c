@@ -9,8 +9,6 @@
 
 void menu(){
 
-    int opcion;
-
     printf("Menu de agenda de contactos\n");
     printf("------------------------------------\n");
     printf("1 - Listado de personas\n");
@@ -105,12 +103,15 @@ void aniadirContacto(tContacto *agenda, int numPersonas){
     }
 }
 
-void borrarContacto(tContacto *agenda){
+void borrarContacto(tContacto *agenda, int numPersonas){
+
     int elem,aux=0;
     char tem[2];
+
     printf("Introduce el numero de contacto que desea eliminar:");
-    fgets(tem, 2, stdin);
+    gets(tem);
     elem = atoi(tem);
+
     for (int i=0; i<MAX && aux ==0;i++){
         if (i == elem-1){
             strcpy((agenda+i)->nombre, (agenda+elem)->nombre);
@@ -119,19 +120,25 @@ void borrarContacto(tContacto *agenda){
             aux = 1;
         }
     }
+    for (int i = elem; i<numPersonas; i++){
+        strcpy((agenda+elem)->nombre, (agenda+elem+1)->nombre);
+        strcpy((agenda+elem)->apellido, (agenda+elem+1)->apellido);
+        strcpy((agenda+elem)->num, (agenda+elem+1)->num);
+    }
 }
-
-
-tContacto *iniciarLista(int tam){
-    tContacto *agenda;
-    agenda = (tContacto *)malloc(sizeof(tContacto)*tam);
-    return agenda;
-}
-
 
 void arreglar(char *palabra){
     int aux = 0;
     for (int i = 0; i<250 && aux == 0; i++){
         if (palabra[i] == '\n') palabra[i] = '\0';
     }
+}
+
+void garardarFichero(tContacto *agenda){
+    char file[MAX];
+    printf("Nombre del fichero de texto:");
+    gets(file);
+    FILE *f = fopen(file, "w");
+
+
 }

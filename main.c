@@ -23,7 +23,6 @@ int main() {
             case 1:
                 printf("Ha seleccionado la opcion de ver su agenda de contactos\n");
                 verAgenda(agenda, contadorPersonas);
-                system("pause");
                 break;
 
             case 2:
@@ -37,8 +36,8 @@ int main() {
 
             case 3:
                 printf("Ha seleccionado la opcion de borrar un nuevo contacto\n");
-                borrarContacto(agenda);
-                system("pause");
+                borrarContacto(agenda, contadorPersonas);
+                contadorPersonas--;
                 break;
 
             case 4:
