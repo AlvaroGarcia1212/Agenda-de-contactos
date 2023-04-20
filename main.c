@@ -37,8 +37,7 @@ int main() {
 
             case 3:
                 printf("Ha seleccionado la opcion de borrar un nuevo contacto\n");
-                borrarContacto(agenda, contadorPersonas);
-                contadorPersonas--;
+                borrarContacto(agenda, &contadorPersonas);
                 break;
 
             case 4:

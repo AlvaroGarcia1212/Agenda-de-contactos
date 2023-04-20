@@ -105,7 +105,7 @@ void aniadirContacto(tContacto *agenda, int numPersonas){
     }
 }
 
-void borrarContacto(tContacto *agenda, int numPersonas){
+void borrarContacto(tContacto *agenda, int *numPersonas){
 
     int elem,aux=0;
     char tem[2];
@@ -116,17 +116,24 @@ void borrarContacto(tContacto *agenda, int numPersonas){
 
     for (int i=0; i<MAX && aux ==0;i++){
         if (i == elem-1){
-            strcpy((agenda+i)->nombre, (agenda+elem)->nombre);
-            strcpy((agenda+i)->apellido, (agenda+elem)->apellido);
-            strcpy((agenda+i)->num, (agenda+elem)->num);
-            aux = 1;
+            printf("Used desea borrar a :  %i;%s;%s;%s;%s\n", i+1, (agenda+i)->nombre,(agenda+i)->apellido, (agenda+i)->num, (agenda+i)->edad);
+            printf("Seguro? (s/n):");
+            gets(tem);
+            if (strcmp(tem, "s")==0|| strcmp(tem, "S")==0){
+                strcpy((agenda+i)->nombre, (agenda+elem)->nombre);
+                strcpy((agenda+i)->apellido, (agenda+elem)->apellido);
+                strcpy((agenda+i)->num, (agenda+elem)->num);
+                aux = 1;
+                for (int j = elem; j<*numPersonas; j++){
+                    strcpy((agenda+elem)->nombre, (agenda+elem+1)->nombre);
+                    strcpy((agenda+elem)->apellido, (agenda+elem+1)->apellido);
+                    strcpy((agenda+elem)->num, (agenda+elem+1)->num);
+                }
+                (*numPersonas)--;
+            }else printf("Proceso abortado");
         }
     }
-    for (int i = elem; i<numPersonas; i++){
-        strcpy((agenda+elem)->nombre, (agenda+elem+1)->nombre);
-        strcpy((agenda+elem)->apellido, (agenda+elem+1)->apellido);
-        strcpy((agenda+elem)->num, (agenda+elem+1)->num);
-    }
+
 }
 
 void arreglar(char *palabra){
